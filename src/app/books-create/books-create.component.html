@@ -1,0 +1,29 @@
+<div class="button-row">
+  <a mat-fab color="primary" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
+</div>
+<form [formGroup]="booksForm" class="example-form" (ngSubmit)="onFormSubmit(booksForm.value)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Book" formControlName="bookId"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!booksForm.get('bookId').valid && booksForm.get('bookId').touched">Please enter Book Book</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" formControlName="bookName"
+           [errorStateMatcher]="matcher"/>
+    <mat-error>
+      <span *ngIf="!booksForm.get('bookName').valid && booksForm.get('bookName').touched">Please enter Book Name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Download Url" formControlName="downloadUrl"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!booksForm.get('downloadUrl').valid && booksForm.get('downloadUrl').touched">Please enter Book Download Url</span>
+    </mat-error>
+  </mat-form-field>
+  <div class="button-row">
+    <button type="submit" [disabled]="!booksForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
+  </div>
+</form>
